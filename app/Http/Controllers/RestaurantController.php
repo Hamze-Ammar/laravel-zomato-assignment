@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller{
@@ -9,7 +9,9 @@ class RestaurantController extends Controller{
     public function addResto(request $request){
         $resto = new Restaurant;
         $resto->name = $request->name;
-        $resto->email = $request->email;
+        $resto->description = $request->description;
+        $resto->address = $request->address;
+
         $resto->save();
 
         return response()->json([
