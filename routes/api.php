@@ -11,3 +11,4 @@ Route::post('/sign_up', [UserController::class, 'signUp'])->name("sign_up");
 Route::post('/sign_in', [UserController::class, 'signIn'])->name("sign_in");
 
 Route::post('/add_resto', [RestaurantController::class, 'addResto'])->name("add_resto");
+Route::post('/get_restaurants/{id?}', [RestaurantController::class, 'getRestaurants'])->name("get_restaurants");
