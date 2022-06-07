@@ -16,3 +16,5 @@ Route::post('/get_restaurants/{id?}', [RestaurantController::class, 'getRestaura
 Route::get('/get_rest_review/{id}', [RestaurantController::class, 'getRestReview'])->name("get_rest_review");
 
 
+Route::post('/approve_review', [AdminController::class, 'approveReview'])->name("approve_review");
+Route::get('/get_pending_reviews', [AdminController::class, 'getPendingReviews'])->name("get_pending_reviews");
