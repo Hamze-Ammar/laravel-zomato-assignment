@@ -60,5 +60,41 @@ class UserController extends Controller
         ], 200);
     }
 
+
+    public function editProfile(request $request, $id)
+    {
+        $user = User::find($id);
+        //echo $user;
+
+        $name = $request->name;
+        $email = $request->email;
+        $password = hash("sha256", $request->password);
+
+        //echo $name;
+        // echo $email;
+        // echo $password;
+
+        if ($name){
+            echo "1";
+            $user->name = $name;
+            $user->update();
+        }   
+        if ($email){
+            $user->email = $email;
+            $user->update();
+
+        }
+        if ($request->password!=0){
+            $password = hash("sha256", $request->password);
+            $user->password = $password;
+            $user->update();
+
+        }
+
+        return response()->json([
+            "status" => "Success",
+        ], 200);
+    }
+    
     
 }
