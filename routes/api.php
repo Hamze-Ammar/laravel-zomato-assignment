@@ -13,5 +13,6 @@ Route::post('/add_review', [UserController::class, 'addReview'])->name("addRevie
 
 Route::post('/add_resto', [RestaurantController::class, 'addResto'])->name("add_resto");
 Route::post('/get_restaurants/{id?}', [RestaurantController::class, 'getRestaurants'])->name("get_restaurants");
+Route::get('/get_rest_review/{id}', [RestaurantController::class, 'getRestReview'])->name("get_rest_review");
 
 

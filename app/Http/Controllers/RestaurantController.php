@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Restaurant;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller{
@@ -33,4 +34,24 @@ class RestaurantController extends Controller{
             "restos" => $restos
         ], 200);
     }
+
+    // Get restaurant review
+    public function getRestReview($id)
+    {
+        $review = Review::where("rest_id", $id)->get();
+
+        $count = 0;
+        $total = 0;
+        foreach($review as $rev){
+            $total += intval($rev['rate']);
+            $count ++;
+        }
+        $result =  $total/$count;
+
+        return response()->json([
+            "status" => "Success",
+            "rate" => $result
+        ], 200);
+    }
+
 }
