@@ -52,7 +52,6 @@ class RestaurantController extends Controller{
             $result = "No reviews found";
         }
         
-
         return response()->json([
             "status" => "Success",
             "rate" => $result
