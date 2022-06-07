@@ -18,4 +18,19 @@ class RestaurantController extends Controller{
             "status" => "Success"
         ], 200);
     }
+
+
+    public function getRestaurants($id = null){
+        if($id != null){
+            $restos = Restaurant::find($id);
+            //$restos = $restos? $restos->name : '';
+        }else{
+            $restos = Restaurant::all();
+        }
+        
+        return response()->json([
+            "status" => "Success",
+            "restos" => $restos
+        ], 200);
+    }
 }
