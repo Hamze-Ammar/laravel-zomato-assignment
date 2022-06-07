@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Review;
+
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -40,5 +42,22 @@ class UserController extends Controller
             "msg" => "You are now logged in!",
             "type"=> $user[0]["type"]
         ], 200);
+    }
+
+    // Add review function
+    public function addReview(Request $request){
+        $review = new Review;
+        $review->content        = $request->content;
+        $review->rate           = $request->rate;
+        $review->user_id        = $request->user_id;
+        $review->rest_id        = $request->rest_id;
+        $review->is_pending     = 1;
+
+        $review->save();
+
+        return response()->json([
+            "status" => "Success",
+        ], 200);
+
     }
 }
