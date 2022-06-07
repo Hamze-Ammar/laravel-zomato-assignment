@@ -46,12 +46,16 @@ class RestaurantController extends Controller{
             $total += intval($rev['rate']);
             $count ++;
         }
-        $result =  $total/$count;
+        if ($count){
+           $result =  $total/$count; 
+        }else{
+            $result = "No reviews found";
+        }
+        
 
         return response()->json([
             "status" => "Success",
             "rate" => $result
         ], 200);
     }
-
 }
