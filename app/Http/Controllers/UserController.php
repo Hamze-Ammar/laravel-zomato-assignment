@@ -68,7 +68,7 @@ class UserController extends Controller
 
         $name = $request->name;
         $email = $request->email;
-        $password = hash("sha256", $request->password);
+        //$password = hash("sha256", $request->password);
 
         //echo $name;
         // echo $email;
